@@ -1,0 +1,269 @@
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: var(--sidebar-width);
+  padding: 12px 10px;
+  border-right: 1px solid var(--sidebar-line);
+  background: var(--sidebar);
+  color: var(--sidebar-text);
+  overflow: hidden auto;
+  transition: width 180ms ease, transform 180ms ease;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  margin-bottom: 10px;
+  padding: 0 4px 0 6px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brandName {
+  color: var(--sidebar-ink);
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.collapse,
+.logout {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.collapse:hover,
+.logout:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-ink);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 34px;
+  margin-bottom: 14px;
+  padding: 0 8px 0 10px;
+  border: 1px solid var(--sidebar-line);
+  border-radius: var(--radius-control);
+  background: var(--paper);
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 120ms;
+}
+
+.search:hover {
+  border-color: var(--line-strong);
+}
+
+.search .label {
+  flex: 1;
+  text-align: left;
+}
+
+.kbd {
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper-soft);
+  color: var(--ink-faint);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.nav {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 16px;
+}
+
+.section {
+  display: grid;
+  gap: 1px;
+}
+
+.sectionLabel {
+  height: 22px;
+  padding: 0 10px;
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 7px;
+  color: var(--sidebar-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 100ms, color 100ms;
+}
+
+.link svg {
+  flex-shrink: 0;
+}
+
+.link:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-ink);
+}
+
+.active,
+.active:hover {
+  background: var(--paper);
+  color: var(--sidebar-ink);
+  box-shadow: 0 0 0 1px var(--sidebar-line), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.active svg {
+  color: var(--accent);
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 10px 4px 2px;
+  border-top: 1px solid var(--sidebar-line);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.who {
+  min-width: 0;
+  flex: 1;
+}
+
+.name {
+  color: var(--sidebar-ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.email {
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+}
+
+.name,
+.email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- collapsed: icons only ---------- */
+
+.collapsed {
+  width: 64px;
+}
+
+.collapsed .top {
+  justify-content: center;
+  padding: 0;
+}
+
+.collapsed .brand,
+.collapsed .label,
+.collapsed .kbd,
+.collapsed .who,
+.collapsed .logout {
+  display: none;
+}
+
+.collapsed .search,
+.collapsed .link {
+  justify-content: center;
+  padding: 0;
+}
+
+.collapsed .sectionLabel {
+  overflow: hidden;
+  padding: 0;
+  font-size: 0;
+}
+
+.collapsed .sectionLabel::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: 10px 8px;
+  background: var(--sidebar-line);
+}
+
+.collapsed .section:first-child .sectionLabel {
+  display: none;
+}
+
+.collapsed .account {
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* On small screens the sidebar is a drawer that slides in. */
+@media (max-width: 900px) {
+  .sidebar,
+  .collapsed {
+    width: var(--sidebar-width);
+    transform: translateX(-100%);
+  }
+
+  .open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lift);
+  }
+
+  .collapse {
+    display: none;
+  }
+
+  .collapsed .brand,
+  .collapsed .label,
+  .collapsed .kbd,
+  .collapsed .who,
+  .collapsed .logout {
+    display: revert;
+  }
+}

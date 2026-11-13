@@ -1,0 +1,51 @@
+.ring {
+  position: relative;
+  flex-shrink: 0;
+  width: 132px;
+  height: 132px;
+}
+
+.track {
+  fill: none;
+  stroke: var(--page);
+}
+
+.arc {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.high {
+  stroke: var(--good);
+}
+
+.medium {
+  stroke: var(--amber-mark);
+}
+
+.low {
+  stroke: var(--bad);
+}
+
+.label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.outOf {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}

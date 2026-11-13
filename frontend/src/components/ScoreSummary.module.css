@@ -1,0 +1,55 @@
+.summary {
+  padding: 20px;
+}
+
+.row {
+  margin-top: 18px;
+}
+
+.rowHead {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.rowValue {
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  height: 8px;
+  margin: 6px 0 8px;
+  border-radius: 4px;
+  background: var(--page);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.high {
+  background: var(--good);
+}
+
+.medium {
+  background: var(--amber-mark);
+}
+
+.low {
+  background: var(--bad);
+}
+
+.hint,
+.formula {
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.formula {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}

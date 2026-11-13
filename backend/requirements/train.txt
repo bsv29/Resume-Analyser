@@ -1,0 +1,7 @@
+# For the scripts in training/. Use a machine with a GPU (Colab works).
+-r ml.txt
+sentence-transformers[train]==3.1.1
+datasets>=2.20
+scikit-learn>=1.4
+scipy>=1.11
+pandas>=2.1

@@ -1,0 +1,57 @@
+.card {
+  transition: box-shadow 160ms;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.blue {
+  background: var(--accent-tint);
+  color: var(--accent);
+}
+
+.green {
+  background: var(--good-tint);
+  color: var(--good);
+}
+
+.amber {
+  background: var(--okay-tint);
+  color: var(--okay);
+}
+
+.slate {
+  background: var(--slate-tint);
+  color: var(--slate);
+}
+
+.label {
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.value {
+  margin-top: 2px;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hint {
+  margin-top: 2px;
+  color: var(--ink-faint);
+  font-size: 0.8125rem;
+}

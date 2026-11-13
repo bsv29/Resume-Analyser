@@ -1,0 +1,159 @@
+.hero {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding: 34px 32px;
+  border-radius: var(--radius-sheet);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(60% 140% at 100% 0%, var(--accent-tint), transparent 70%),
+    var(--paper);
+}
+
+.hero h1 {
+  font-size: 1.75rem;
+}
+
+.hero p {
+  max-width: 560px;
+  color: var(--ink-soft);
+}
+
+.heroEyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.heroActions {
+  margin-top: 8px;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: var(--radius-control);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.heroButton:hover {
+  background: var(--accent-dark);
+}
+
+.sectionTitle {
+  margin-bottom: 12px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 18px;
+}
+
+.steps h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.steps p {
+  font-size: 0.85rem;
+}
+
+.stepIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  background: var(--violet-tint);
+  color: var(--violet);
+}
+
+.stepNo {
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.marks {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marks li {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.tips {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.92rem;
+}
+
+.faq {
+  display: grid;
+}
+
+.faq details {
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.faq details:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.faq summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq details p {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1100px) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 26px 20px;
+  }
+}

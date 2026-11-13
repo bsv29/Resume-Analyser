@@ -1,0 +1,137 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+.showcase {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 44px 56px;
+  background: var(--sidebar);
+  color: #b6c0d0;
+}
+
+.brand,
+.mobileBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand {
+  color: #fff;
+}
+
+.mobileBrand {
+  display: none;
+  margin-bottom: 28px;
+}
+
+.headline {
+  max-width: 460px;
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 420px;
+  margin-top: 14px;
+  font-size: 1.0625rem;
+}
+
+.preview {
+  max-width: 440px;
+  padding: 20px 22px;
+  border-radius: var(--radius-sheet);
+  background: #fff;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.previewHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.previewScore {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--good-tint);
+  color: var(--good);
+  font-size: 0.875rem;
+}
+
+.covered {
+  background: linear-gradient(transparent 45%, var(--mark-covered) 45%);
+}
+
+.partial {
+  background: linear-gradient(transparent 45%, var(--mark-partial) 45%);
+}
+
+.missing {
+  text-decoration: underline wavy var(--bad);
+  text-underline-offset: 4px;
+}
+
+.formSide {
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+}
+
+.formBox {
+  width: 100%;
+  max-width: 380px;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: var(--ink-soft);
+}
+
+.footer {
+  margin-top: 22px;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.footer a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase {
+    display: none;
+  }
+
+  .mobileBrand {
+    display: flex;
+  }
+}

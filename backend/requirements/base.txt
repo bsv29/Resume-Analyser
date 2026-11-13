@@ -1,0 +1,11 @@
+# Web app, database, auth, PDF reading. No ML packages here.
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic-settings==2.5.2
+email-validator>=2.1
+sqlalchemy==2.0.35
+bcrypt>=4.1
+PyJWT>=2.7
+pypdf==4.3.1
+numpy>=1.26,<3

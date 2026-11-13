@@ -1,0 +1,88 @@
+.wrap {
+  display: grid;
+  gap: 14px;
+}
+
+.grid {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.dayLabels,
+.column {
+  display: grid;
+  grid-template-rows: 16px repeat(7, 15px);
+  gap: 4px;
+}
+
+.dayLabels {
+  margin-right: 4px;
+  color: var(--ink-faint);
+  font-size: 0.68rem;
+  line-height: 15px;
+}
+
+.month {
+  color: var(--ink-faint);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.column {
+  flex: 1 0 12px;
+}
+
+.cell {
+  display: block;
+  width: 100%;
+  min-width: 12px;
+  height: 15px;
+  border-radius: 3px;
+  background: var(--slate-tint);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.cell[data-level="1"] {
+  background: color-mix(in srgb, var(--accent) 35%, var(--paper));
+}
+
+.cell[data-level="2"] {
+  background: color-mix(in srgb, var(--accent) 65%, var(--paper));
+}
+
+.cell[data-level="3"] {
+  background: var(--accent);
+}
+
+.future {
+  visibility: hidden;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.footer strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-faint);
+}
+
+.legend .cell {
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+}

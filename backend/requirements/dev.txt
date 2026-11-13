@@ -1,0 +1,7 @@
+# For tests and CI. The tests use a fake embedder, so PyTorch is not needed.
+-r base.txt
+pytest==8.3.3
+httpx==0.27.2
+scikit-learn>=1.4
+scipy>=1.11
+pandas>=2.1

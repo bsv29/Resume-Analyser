@@ -1,0 +1,25 @@
+.badge {
+  display: inline-block;
+  min-width: 40px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.high {
+  background: var(--good-tint);
+  color: var(--good);
+}
+
+.medium {
+  background: var(--okay-tint);
+  color: var(--okay);
+}
+
+.low {
+  background: var(--bad-tint);
+  color: var(--bad);
+}

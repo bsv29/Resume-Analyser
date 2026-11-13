@@ -1,0 +1,2 @@
+# Default install for running the API locally.
+-r requirements/ml.txt

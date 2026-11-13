@@ -1,0 +1,134 @@
+.wrapper {
+  padding: 24px 28px 12px;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.legend {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.filter {
+  display: flex;
+  flex-shrink: 0;
+  padding: 3px;
+  border-radius: var(--radius-control);
+  background: var(--page);
+}
+
+.filterButton,
+.filterActive {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filterActive {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sheet);
+}
+
+.lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 28px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.line:last-child {
+  border-bottom: 0;
+}
+
+.requirement {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+/* The highlighter: colour only the lower part of each text line,
+   and repeat it properly when the sentence wraps to a new line. */
+.covered,
+.partial {
+  padding: 0 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.covered {
+  background: linear-gradient(transparent 45%, var(--mark-covered) 45%);
+}
+
+.partial {
+  background: linear-gradient(transparent 45%, var(--mark-partial) 45%);
+}
+
+.missing {
+  text-decoration: underline wavy var(--gap);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+.evidence {
+  font-size: 0.875rem;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.similarity {
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.resumeLine {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.empty {
+  padding: 28px 0;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+  .wrapper {
+    padding: 18px 16px 6px;
+  }
+
+  .head {
+    flex-direction: column;
+  }
+
+  .line {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

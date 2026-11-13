@@ -1,0 +1,18 @@
+# Runs the API in a container:   docker compose up --build
+# The frontend still runs with "npm run dev" and talks to localhost:8000.
+
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////data/shortlist.db
+      ALLOWED_ORIGINS: '["http://localhost:5173"]'
+    volumes:
+      - api-data:/data                              # keeps the database between restarts
+      - model-cache:/root/.cache/huggingface        # keeps the downloaded model
+
+volumes:
+  api-data:
+  model-cache:

@@ -1,0 +1,58 @@
+.dropArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  padding: 20px;
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-control);
+  background: var(--paper-soft);
+  text-align: center;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.dropArea:hover,
+.dropArea:focus-within,
+.dragging {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.prompt {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.error {
+  margin-top: 8px;
+  color: var(--gap);
+  font-size: 0.875rem;
+}
+
+.list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  font-size: 0.9375rem;
+}
+
+.item + .item {
+  border-top: 1px solid var(--line);
+}
+
+.name {
+  word-break: break-all;
+}

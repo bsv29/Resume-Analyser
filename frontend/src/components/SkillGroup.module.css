@@ -1,0 +1,55 @@
+.group + .group {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.count {
+  margin-left: 4px;
+  color: var(--ink-soft);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.matched {
+  background: var(--good-tint);
+  color: var(--good);
+}
+
+.missing {
+  background: var(--gap-tint);
+  color: var(--gap);
+  
+}
+
+.extra {
+  background: var(--page);
+  color: var(--ink-soft);
+}
