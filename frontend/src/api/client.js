@@ -3,7 +3,14 @@
 
 import { readToken } from "../utils/tokenStorage.js";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
+// VITE_API_URL may be given with or without "/api/v1" and a trailing slash
+// (e.g. "https://api.example.com/"); all forms end up as ".../api/v1".
+function apiBase(raw) {
+  const url = (raw || "http://localhost:8000").trim().replace(/\/+$/, "");
+  return url.endsWith("/api/v1") ? url : `${url}/api/v1`;
+}
+
+const BASE_URL = apiBase(import.meta.env.VITE_API_URL);
 
 // AuthContext registers a function here. It runs when the server answers
 // 401 (token expired), so the user is logged out in one place.
