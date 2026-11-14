@@ -65,6 +65,44 @@ Tests (no model download needed):
     pip install -r requirements/dev.txt
     pytest
 
+## Deploy
+
+Frontend on **Netlify**, API on **Hugging Face Spaces** (free Docker hosting
+with enough RAM for PyTorch). Deploy the API first, because the frontend
+needs its URL.
+
+### 1. API on Hugging Face Spaces
+
+1. Create a Space at https://huggingface.co/new-space: SDK **Docker**, template **Blank**, hardware **CPU basic (free)**.
+2. In the Space: **Settings → Variables and secrets**, add
+   - secret `SECRET_KEY`: `python -c "import secrets; print(secrets.token_hex(32))"`
+   - variable `ALLOWED_ORIGINS`: `["https://YOUR-SITE.netlify.app"]` (update after step 2)
+3. Push only the `backend/` folder to the Space (use a Hugging Face access token with *write* access as the password):
+
+       git remote add space https://huggingface.co/spaces/YOUR-HF-USER/YOUR-SPACE
+       git subtree push --prefix backend space main
+
+4. Wait for the build (about 5 minutes). Check `https://YOUR-HF-USER-YOUR-SPACE.hf.space/api/v1/health`.
+
+### 2. Frontend on Netlify
+
+1. https://app.netlify.com → **Add new site → Import an existing project → GitHub** → pick this repo.
+   `netlify.toml` already sets base `frontend`, build `npm run build`, publish `dist`.
+2. **Site configuration → Environment variables**, add
+   `VITE_API_URL` = `https://YOUR-HF-USER-YOUR-SPACE.hf.space/api/v1`
+3. **Deploys → Trigger deploy**. Then put the Netlify URL into the Space's `ALLOWED_ORIGINS` (step 1.2); the Space restarts by itself.
+
+### Keeping data
+
+SQLite on a free Space is wiped whenever the Space restarts or rebuilds.
+For data that lasts, create a free PostgreSQL database (for example on
+https://neon.tech) and add it to the Space as the secret
+`DATABASE_URL=postgresql+psycopg://USER:PASSWORD@HOST/DB?sslmode=require`.
+Tables are created on first start.
+
+Free Spaces go to sleep after 48 hours without visits; the first request
+afterwards takes about a minute.
+
 ## Train and evaluate the model
 
 Use a machine with a GPU (Google Colab works). From `backend/`:

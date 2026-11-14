@@ -11,7 +11,7 @@ services:
       ALLOWED_ORIGINS: '["http://localhost:5173"]'
     volumes:
       - api-data:/data                              # keeps the database between restarts
-      - model-cache:/root/.cache/huggingface        # keeps the downloaded model
+      - model-cache:/app/.cache/huggingface         # keeps the downloaded model
 
 volumes:
   api-data:
