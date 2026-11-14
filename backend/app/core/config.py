@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     # A Hugging Face model name, or a local folder that contains the model
     # fine-tuned by training/train.py.
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    # "auto", "onnx" (fastembed, light) or "torch" (sentence-transformers).
+    embedding_backend: str = "auto"
 
     max_file_size_mb: int = 5
     max_rank_files: int = 10

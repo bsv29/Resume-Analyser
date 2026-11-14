@@ -1,26 +1,20 @@
----
-title: Shortlist API
-emoji: 📄
-colorFrom: indigo
-colorTo: blue
-sdk: docker
-app_port: 8000
-pinned: false
----
-
 # Shortlist API
 
 FastAPI backend for Shortlist (resume vs job description analyser).
-The header above is read by Hugging Face Spaces, which builds `Dockerfile`
-in this folder. See the main `README.md` for local setup and the full
-deployment guide.
+See the main `README.md` for local setup and the deploy guide.
 
-Settings come from environment variables (Space → Settings → Variables and secrets):
+`Dockerfile` builds the production image. It runs the MiniLM model with
+ONNX Runtime (`requirements/deploy.txt`) instead of PyTorch: the vectors
+are the same, and the server needs ~240 MB of RAM, so it fits on free
+512 MB hosts such as Render.
+
+Environment variables:
 
 | Name | Example |
 |---|---|
-| `SECRET_KEY` (secret) | output of `python -c "import secrets; print(secrets.token_hex(32))"` |
+| `SECRET_KEY` | output of `python -c "import secrets; print(secrets.token_hex(32))"` |
 | `ALLOWED_ORIGINS` | `["https://your-site.netlify.app"]` |
-| `DATABASE_URL` (secret, optional) | `postgresql+psycopg://user:pass@host/db?sslmode=require` |
+| `DATABASE_URL` | `postgresql+psycopg://user:pass@host/db?sslmode=require` |
+| `EMBEDDING_BACKEND` | `auto` (default), `onnx` or `torch` |
 
-API docs: `https://<your-space>.hf.space/docs`
+API docs on a running server: `/docs`

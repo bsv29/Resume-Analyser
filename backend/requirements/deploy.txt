@@ -1,0 +1,4 @@
+# What the production server needs: base + a light ONNX runtime for the
+# model instead of PyTorch (~220 MB RAM instead of ~480 MB, same vectors).
+-r base.txt
+fastembed>=0.4,<1
