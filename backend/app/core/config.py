@@ -6,8 +6,10 @@ directly inside the logic, you have to hunt for it later. Here you change
 it in one place, or override it from the .env file without touching code.
 """
 
+import json
 from functools import lru_cache
 
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,8 +17,11 @@ class Settings(BaseSettings):
     app_name: str = "Shortlist API"
     log_level: str = "INFO"
 
-    # Which frontend URLs are allowed to call this API (CORS).
-    allowed_origins: list[str] = ["http://localhost:5173"]
+    # Which frontend URLs are allowed to call this API (CORS). Accepts a
+    # JSON list, one URL, or several URLs separated by commas:
+    #   ["https://a.netlify.app"]   https://a.netlify.app   https://a.app,https://b.app
+    # Typed "str | list" so pydantic-settings does not insist on JSON.
+    allowed_origins: str | list[str] = ["http://localhost:5173"]
 
     # SQLite is a single file, good for local work. Changing this one URL
     # to a PostgreSQL URL is enough to switch databases, because all
@@ -56,6 +61,20 @@ class Settings(BaseSettings):
     similarity_ceiling: float = 0.70
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
+    @field_validator("allowed_origins", mode="after")
+    @classmethod
+    def _parse_origins(cls, value: str | list[str]) -> list[str]:
+        if isinstance(value, str):
+            text = value.strip()
+            try:
+                parsed = json.loads(text)
+                value = parsed if isinstance(parsed, list) else [str(parsed)]
+            except ValueError:
+                value = text.strip("[]").split(",")
+        # tidy up: stray quotes, spaces, and a trailing slash never match an Origin header
+        cleaned = [str(item).strip().strip("'\"“”‘’").strip().rstrip("/") for item in value]
+        return [origin for origin in cleaned if origin]
 
 
 @lru_cache
