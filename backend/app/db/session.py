@@ -16,13 +16,23 @@ from app.db.base import Base
 
 _settings = get_settings()
 
-# SQLite by default refuses to be used from more than one thread.
-# FastAPI runs requests in a thread pool, so we switch that check off.
-_connect_args = (
-    {"check_same_thread": False} if _settings.database_url.startswith("sqlite") else {}
-)
-
-engine = create_engine(_settings.database_url, connect_args=_connect_args)
+if _settings.database_url.startswith("sqlite"):
+    # SQLite by default refuses to be used from more than one thread.
+    # FastAPI runs requests in a thread pool, so we switch that check off.
+    engine = create_engine(_settings.database_url, connect_args={"check_same_thread": False})
+else:
+    # Hosted PostgreSQL (e.g. Neon) closes idle connections and may pause
+    # the whole database when nobody uses it. pool_pre_ping tests each
+    # pooled connection before use and replaces a dead one instead of
+    # failing the request; pool_recycle drops connections after 5 minutes.
+    # prepare_threshold=None turns off server-side prepared statements,
+    # which connection poolers in transaction mode do not keep.
+    engine = create_engine(
+        _settings.database_url,
+        pool_pre_ping=True,
+        pool_recycle=300,
+        connect_args={"prepare_threshold": None},
+    )
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 
