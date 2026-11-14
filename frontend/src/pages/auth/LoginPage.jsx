@@ -66,6 +66,7 @@ export default function LoginPage() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             autoComplete="email"
+            placeholder="you@example.com"
             aria-invalid={Boolean(errors.email)}
           />
           {errors.email && <p className={styles.fieldError}>{errors.email}</p>}

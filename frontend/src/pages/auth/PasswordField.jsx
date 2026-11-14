@@ -18,6 +18,7 @@ export default function PasswordField({ id, value, onChange, autoComplete, error
           value={value}
           onChange={(event) => onChange(event.target.value)}
           autoComplete={autoComplete}
+          placeholder="••••••••"
           aria-invalid={Boolean(error)}
         />
         <button

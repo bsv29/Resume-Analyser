@@ -66,6 +66,7 @@ export default function RegisterPage() {
             value={name}
             onChange={(event) => setName(event.target.value)}
             autoComplete="name"
+            placeholder="Priya Sharma"
             aria-invalid={Boolean(errors.name)}
           />
           {errors.name && <p className={styles.fieldError}>{errors.name}</p>}
@@ -80,6 +81,7 @@ export default function RegisterPage() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             autoComplete="email"
+            placeholder="you@example.com"
             aria-invalid={Boolean(errors.email)}
           />
           {errors.email && <p className={styles.fieldError}>{errors.email}</p>}
